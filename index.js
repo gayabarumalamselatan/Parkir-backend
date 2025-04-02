@@ -12,6 +12,11 @@ app.use(express.json());
 app.use(cors());
 const port = process.env.PORT;
 
+app.use('/', (req, res) => {
+  return res.status(200).json({
+    message: "Server is running",
+  })
+})
 app.use('/auth-service', userRoutes);
 app.use('/menu-service', menuRoutes);
 app.use('/member-service', memberRoutes);
