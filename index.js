@@ -14,7 +14,7 @@ const port = process.env.PORT || 3000;
 
 app.get('/', (req, res) => {
   return res.status(200).json({
-    message: `Server is running: ${port}, db is running on ${process.env.DATABSE_URL}`,
+    message: `Server is running: ${port}, db is running on ${process.env.DATABASE_URL}`,
   })
 })
 app.use('/auth-service', userRoutes);
@@ -22,5 +22,5 @@ app.use('/menu-service', menuRoutes);
 app.use('/member-service', memberRoutes);
 
 app.listen(port, () => {
-  console.log(`Server is running on port: ${port}`)
+  console.log(`Server is running on port: ${port}, db is running on ${process.env.DATABASE_URL}`)
 })
