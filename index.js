@@ -12,7 +12,7 @@ app.use(express.json());
 app.use(cors());
 const port = process.env.PORT;
 
-app.use('/', (req, res) => {
+app.get('/', (req, res) => {
   return res.status(200).json({
     message: "Server is running",
   })
