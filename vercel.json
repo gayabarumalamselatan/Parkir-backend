@@ -11,5 +11,10 @@
       "src": "/.*",
       "dest": "index.js"
     }
-  ]
+  ],
+  "build": {
+    "env": {
+      "PRISMA_GENERATE": "true"
+    }
+  }
 }
