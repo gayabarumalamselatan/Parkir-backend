@@ -14,7 +14,7 @@ const port = process.env.PORT || 3000;
 
 app.get('/', (req, res) => {
   return res.status(200).json({
-    message: `Server is running: ${port}`,
+    message: `Server is running: ${port}, db is running on ${process.env.DATABSE_URL}`,
   })
 })
 app.use('/auth-service', userRoutes);
