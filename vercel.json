@@ -16,8 +16,5 @@
     "env": {
       "PRISMA_GENERATE": "true"
     }
-  },
-  "env": {
-    "DATABASE_URL": "@DATABASE_URL"
   }
 }
