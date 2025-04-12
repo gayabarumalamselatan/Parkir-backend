@@ -1,6 +1,9 @@
 const memberService = require('../../Service/Member/member')
 
 const addMemberController = async (req, res) => {
+  /**
+   #swagger.tags = ['Member']
+    */
   try {
     const result = await memberService.addMember(req.body)
     if(!result.success){
@@ -20,6 +23,9 @@ const addMemberController = async (req, res) => {
 }
 
 const getMemberController = async (req, res) => {
+  /**
+   #swagger.tags = ['Member']
+    */
   try {
     const data = await memberService.getMember(req.query)
     res.json(data)
@@ -31,6 +37,9 @@ const getMemberController = async (req, res) => {
 }
 
 const updateMemberController = async (req, res) => {
+  /**
+   #swagger.tags = ['Member']
+    */
   try {
     const result = await memberService.updateMember(req.body)
     if(!result.success){
@@ -50,6 +59,9 @@ const updateMemberController = async (req, res) => {
 } 
 
 const deleteMember = async (req, res) => {
+  /**
+   #swagger.tags = ['Member']
+    */
   const { id } = req.params
   try {
     const result = await memberService.deleteMember(parseInt(id))

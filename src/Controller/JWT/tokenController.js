@@ -1,6 +1,9 @@
 const tokenHandler = require('../../Service/JWT/tokenHandler')
 
 const refreshAccessToken = async (req, res) => {
+  /**
+   #swagger.tags = ['Token']
+    */
   const { refreshToken } = req.body;
 
   if (!refreshToken) {
@@ -16,6 +19,9 @@ const refreshAccessToken = async (req, res) => {
 }
 
 const generateRefreshTokenController = async (req, res) => {
+  /**
+   #swagger.tags = ['Token']
+    */
   const { refreshToken } = req.body;
 
   try {

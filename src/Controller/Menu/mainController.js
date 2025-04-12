@@ -1,6 +1,9 @@
 const Service = require('../../Service/Menu/mainService')
 
 const moduleWithMenu = async (req, res) => {
+  /**
+   #swagger.tags = ['Menu']
+    */
   try {
     const data = await Service.moduleWithMenu(req.query)
     console.log(data)
@@ -13,6 +16,9 @@ const moduleWithMenu = async (req, res) => {
 }
 
 const allModuleMenu = async(req, res) => {
+  /**
+ #swagger.tags = ['Menu']
+  */
   try {
     const data = await Service.getAllModuleMenu()
     res.json(data)

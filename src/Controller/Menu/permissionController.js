@@ -1,6 +1,9 @@
 const PermissionService = require('../../Service/Menu/permissionService')
 
 const getPermissionListController = async (req, res) => {
+  /**
+   #swagger.tags = ['Permission']
+    */
   try {
     const data = await PermissionService.getPermissionList(req.body);
     res.json(data);
@@ -13,6 +16,9 @@ const getPermissionListController = async (req, res) => {
 }
 
 const createPermissionController = async (req, res) => {
+  /**
+   #swagger.tags = ['Permission']
+    */
   try {
     const data = await PermissionService.createPermission(req.body);
     if(!data.success){
@@ -33,6 +39,9 @@ const createPermissionController = async (req, res) => {
 }
 
 const updatePermissionController = async (req, res) => {
+  /**
+   #swagger.tags = ['Permission']
+    */
   try {
     const result = await PermissionService.updatePermission(req.body);
     if(!result.success){
@@ -51,7 +60,9 @@ const updatePermissionController = async (req, res) => {
 }
 
 const deletePermissionController = async (req, res) => {
-
+  /**
+   #swagger.tags = ['Permission']
+    */
   const {id} = req.params
   try {
     const result = await PermissionService.deletePermission(parseInt(id));

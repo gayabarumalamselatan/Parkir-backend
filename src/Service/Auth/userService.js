@@ -43,8 +43,8 @@ const loginAuth = async (name, password) => {
     where: {name: name}
   })
 
-  if (user.length === 0) {
-    return { success: false, message: 'User  not found' };
+  if (!user) {
+    return { success: false, message: 'Password or username is incorrect' };
   }
  
   if(user.is_loggedIn === true){
@@ -85,7 +85,7 @@ const loginAuth = async (name, password) => {
     };
 
   } else {
-    return { success: false, message: 'Incorrect password' };
+    return { success: false, message: 'Password or username is incorrect' };
   }
 };
 

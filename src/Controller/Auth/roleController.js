@@ -1,6 +1,9 @@
 const roleService = require('../../Service/Auth/roleService')
 
 const addRole = async (req, res) => {
+  /**
+   #swagger.tags = ['Role']
+    */
   const { role_name } = req.body
 
   try {
@@ -17,6 +20,9 @@ const addRole = async (req, res) => {
 }
 
 const getRole = async (req, res) => {
+  /**
+   #swagger.tags = ['Role']
+    */
   try {
     const data = await roleService.getRole(req.query)
     res.json(data)
@@ -29,6 +35,9 @@ const getRole = async (req, res) => {
 }
 
 const updateRole = async (req, res) => {
+  /**
+   #swagger.tags = ['Role']
+    */
   try {
     const result = await roleService.updateRole(req.body)
     if (!result.success) {
@@ -44,6 +53,9 @@ const updateRole = async (req, res) => {
 }
 
 const deleteRole = async ( req, res ) => {
+  /**
+   #swagger.tags = ['Role']
+    */
   const { id } = req.params
   try {
     const result = await roleService.deleteRole(parseInt(id))

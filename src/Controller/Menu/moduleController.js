@@ -1,6 +1,9 @@
 const ModuleService = require('../../Service/Menu/moduleService')
 
 const getModule = async (req, res) => {
+  /**
+   #swagger.tags = ['Menu']
+    */
   try {
     const data = await ModuleService.getModule(req.query)
     res.json(data)
@@ -13,6 +16,9 @@ const getModule = async (req, res) => {
 }
 
 const addNewModule = async (req, res) => {
+  /**
+   #swagger.tags = ['Menu']
+    */
   try {
     const data = await ModuleService.AddNewModule(req.body)
     if (!data.success) {
@@ -27,6 +33,9 @@ const addNewModule = async (req, res) => {
 }
 
 const updateModule = async (req, res) => {
+  /**
+   #swagger.tags = ['Menu']
+    */
   try {
     const result = await ModuleService.updateModule(req.body)
     if (!result.success) {
@@ -41,6 +50,9 @@ const updateModule = async (req, res) => {
 }
 
 const deleteModule = async (req, res) => {
+  /**
+   #swagger.tags = ['Menu']
+    */
   const { id } = req.params
   try {
     const result = await ModuleService.deleteModule(parseInt(id))

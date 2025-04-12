@@ -1,6 +1,9 @@
 const userService = require('../../Service/Auth/userService')
 
 const getUser = async (req, res) => {
+  /**
+   #swagger.tags = ['Auth']
+    */
   try {
     const data = await userService.getUser(req.query);
     res.json(data)
@@ -14,6 +17,9 @@ const getUser = async (req, res) => {
 }
 
 const loginAuth = async (req, res) => {
+  /**
+   #swagger.tags = ['Auth']
+    */
   const { name, password } = req.body;
 
   // Check if username and password are provided
@@ -43,6 +49,9 @@ const loginAuth = async (req, res) => {
 }
 
 const logOut = async (req, res) => {
+  /**
+   #swagger.tags = ['Auth']
+    */
   const {userId} = req.body;
   if(!userId){
     return res.status(400).json({ message: 'userId are required' });
@@ -62,6 +71,9 @@ const logOut = async (req, res) => {
 }
 
 const registUser = async (req, res) => {
+  /**
+   #swagger.tags = ['Auth']
+    */
   const {name, password, role_id} = req.body;
   
   try {
@@ -78,6 +90,9 @@ const registUser = async (req, res) => {
 }
 
 const updateUser = async (req, res) => {
+  /**
+   #swagger.tags = ['Auth']
+    */
   try {
     console.log(req.body)
     const result = await userService.updateUser(req.body)
@@ -93,6 +108,9 @@ const updateUser = async (req, res) => {
 }
 
 const deleteUser = async (req, res) => {
+  /**
+   #swagger.tags = ['Auth']
+    */
   try {
     console.log('asd',req)
     const result = await userService.deleteUser(req.body)

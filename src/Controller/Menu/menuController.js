@@ -1,6 +1,9 @@
 const MenuService = require('../../Service/Menu/menuService')
 
 const getMenu = async (req, res) => {
+  /**
+   #swagger.tags = ['Menu']
+    */
   try {
     const data = await MenuService.getMenu(req.query)
     res.json(data)
@@ -13,6 +16,9 @@ const getMenu = async (req, res) => {
 }
 
 const addMenu = async (req, res) => {
+  /**
+   #swagger.tags = ['Menu']
+    */
   try {
     const data = await MenuService.addNewMenu(req.body)
     if (!data.success) {
@@ -27,6 +33,9 @@ const addMenu = async (req, res) => {
 }
 
 const updateMenu = async (req, res) => {
+  /**
+   #swagger.tags = ['Menu']
+    */
   try {
     const result = await MenuService.updateMenu(req.body)
     console.log("sad",result)
@@ -42,6 +51,9 @@ const updateMenu = async (req, res) => {
 }
 
 const deleteMenu = async (req, res) => {
+  /**
+   #swagger.tags = ['Menu']
+    */
   const { id } = req.params;
   try {
     const result = await MenuService.deleteMenu(parseInt(id))
