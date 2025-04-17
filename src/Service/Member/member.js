@@ -2,11 +2,13 @@ const { PrismaClient } = require('@prisma/client')
 
 const prisma = new PrismaClient()
 
+const dateFormater = (dateString) => new Date (`${dateString}T00:00:00Z`);
+
 const addMember = async (data) => {
   
   try {
-    const tanggalMasuk = new Date(`${data.tanggal_masuk}T00:00:00Z`); // Set the date from input
-    const tanggalKadaluarsa = new Date(tanggalMasuk); // Create a new date object based on tanggalMasuk
+    const tanggalMasuk = new Date(`${data.tanggal_masuk}T00:00:00Z`); 
+    const tanggalKadaluarsa = new Date(tanggalMasuk); 
     tanggalKadaluarsa.setMonth(tanggalKadaluarsa.getMonth() + 1)
 
     await prisma.member.create({
@@ -69,18 +71,30 @@ const getMember = async (params) => {
 
 const updateMember = async (params) => {
   try {
+
+    const getAMember = await prisma.member.findUnique({
+      where: {
+        id: params.id
+      }
+    })
+
+    const tanggalMasuk = params.tanggal_masuk ? dateFormater(params.tanggal_masuk) : getAMember.tanggal_masuk
+    const tanggalKadaluarsa = params.tanggal_kadaluarsa ? dateFormater(params.tanggal_kadaluarsa) : getAMember.tanggal_kadaluarsa
+
     await prisma.member.update({
       where:{
         id: params.id
       },
       data: {
-        nomor_polisi: params.nomor_polisi,
-        nomor_pengganti: params.nomor_pengganti,
-        nama_pemilik: params.nama_pemilik,
-        nomor_hp: params.nomor_hp,
-        tanggal_masuk: params.tanggal_masuk,
-        bulanan: params.bulanan,
-        keterangan: params.keterangan
+        nomor_polisi: params.nomor_polisi ||getAMember.nomor_polisi,
+        nomor_pengganti: params.nomor_pengganti || getAMember.nomor_pengganti,
+        nama_pemilik: params.nama_pemilik || getAMember.nama_pemilik,
+        nomor_hp: params.nomor_hp || getAMember.nomor_hp,
+        tanggal_masuk: tanggalMasuk,
+        bulanan: params.bulanan || getAMember.bulanan,
+        keterangan: params.keterangan || getAMember.keterangan,
+        tanggal_kadaluarsa: tanggalKadaluarsa,
+        is_black_list: params.is_black_list || getAMember.is_black_list
       }
     })
     return {

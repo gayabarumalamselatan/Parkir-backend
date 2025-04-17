@@ -3,8 +3,8 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
   directUrl = env("DIRECT_URL")
 }
 
@@ -72,4 +72,19 @@ model user {
   role        role    @relation(fields: [role_id], references: [id], map: "User_role_id_fk")
 
   @@index([role_id], map: "User_role_id_index")
+}
+
+model struk {
+  id                    Int      @id @default(autoincrement())
+  nomor_polisi          String
+  nama_pemilik          String
+  tanggal_masuk         DateTime @db.Date
+  tanggal_kadaluarsa    DateTime @db.Date
+  bulanan               Int
+  tanggal_bayar         DateTime @db.Date
+  untuk                 Int
+  jumlah_pembayaran     Int
+  keterangan            String
+  kadaluarsa_berikutnya DateTime @db.Date
+  has_printed           Boolean  @default(false)
 }
